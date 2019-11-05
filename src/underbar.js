@@ -162,14 +162,14 @@
         // first element is used as second argument
         collection = Array.prototype.slice.call(collection, 1); 
         _.each(collection, function(next){
-          accumulator = iterator(accumulator, next)
+          accumulator = iterator(accumulator, next);
         })
       } else {
         _.each(collection, function(next){
-          accumulator = iterator(accumulator, next)
+          accumulator = iterator(accumulator, next);
         })
       }
-      return accumulator
+      return accumulator;
     };
 
   // Determine if the array or object contains a given value (using `===`).
