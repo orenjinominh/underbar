@@ -101,7 +101,16 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
+    var result = [];
+    var found; 
 
+    _.each(array, function(element) {
+      found = _.indexOf(result, element);
+      if (found === -1) {
+        result.push(element);
+      }
+    });
+    return result; 
   };
 
 
