@@ -238,8 +238,8 @@
     _.each(arguments, function(argumentObj) {
       _.each(argumentObj, function(value, key) {
         obj[key] = value; 
-      })
-    })
+      });
+    });
     return obj;
   };
 
@@ -252,7 +252,7 @@
           obj[key] = value;
         }
       });
-    })
+    });
     return obj;
   };
 
@@ -297,6 +297,14 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var computation = {};
+    return function(key) {
+      var key = JSON.stringify(arguments);
+      if (!(key in computation)) {
+        computation[key] = func.apply(this, arguments);
+      }
+      return computation[key];
+    }
   };
 
   // Delays a function for the given number of milliseconds, and then calls
